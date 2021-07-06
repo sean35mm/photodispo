@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('layouts/boilerplate')%>
+<h1>All Photosites</h1>
+<div>
+	<a href="/photosites/new">Add Photosite</a>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photosites</title>
-</head>
-
-<body>
-    <h1>All Photosites</h1>
-    <div>
-        <a href="/photosites/new">Add Photosite</a>
-    </div>
-    <ul>
-        <% for (let photosite of photosites){%>
-            <li><a href="/photosites/<%= photosite._id %>"><%= photosite.title %></a></li>
-        <% }%>
-    </ul>
-
-</body>
-
-</html>
+<% for (let photosite of photosites){%>
+<div class="card" mb-3>
+	<div class="row">
+		<div class="col-md-4">
+			<img src="<%= photosite.image%>" alt="" class="img-fluid" />
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+				<div class="card-title"><%= photosite.title %></div>
+				<p class="card-text"><%= photosite.description %></p>
+				<p class="card-text">
+					<small class="text-muted"><%= photosite.location%> </small>
+				</p>
+				<a class="btn btn-primary" href="/photosites/<%= photosite._id%>"
+					>View <%= photosite.title%></a
+				>
+			</div>
+		</div>
+	</div>
+</div>
+<% }%>

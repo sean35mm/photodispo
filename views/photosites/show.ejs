@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('layouts/boilerplate')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card mb-3">
+                <img src="<%= photosite.image %>" alt="">
+                <div class="card-body">
+                  <h5 class="card-title"><%= photosite.title %></h5>
+                  <p class="card-text"><%= photosite.description %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-muted"><%= photosite.location %></li>
+                  <li class="list-group-item">$<%= photosite.price %>/night</li>
+                </ul>
+                <div class="card-body">
+                    <a class="card-link btn btn-info" href="/photosites/<%=photosite._id%>/edit">Edit</a> 
+                    <form class="d-inline"  action="/photosites/<%=photosite._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
 
-<body>
-    <h1><%= photosite.title %></h1>
-    <h2><%= photosite.location %></h2>
-    <p>
-        <a href="/photosites/<%=photosite._id%>/edit">Edit</a>  
-    </p>
-    <p>
-        <form action="/photosites/<%=photosite._id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
-        </form>
-    </p>
-    <footer>
-        <a href="/photosites">All Photosites</a>
+
     </footer>
-</body>
-
-</html>
